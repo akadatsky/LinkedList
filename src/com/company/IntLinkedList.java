@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class IntLinkedList implements IntList {
 
     private class Element {
@@ -16,6 +18,14 @@ public class IntLinkedList implements IntList {
 
     @Override
     public void add(int value) {
+        Element newElement = new Element(value);
+        if (count == 0) {
+            first = newElement;
+        } else {
+            Element last = getElementAtIndex(count - 1);
+            last.next = newElement;
+        }
+        count++;
     }
 
     @Override
@@ -31,7 +41,7 @@ public class IntLinkedList implements IntList {
 
     @Override
     public int get(int index) {
-        return 0;
+        return getElementAtIndex(index).value;
     }
 
     @Override
@@ -51,7 +61,11 @@ public class IntLinkedList implements IntList {
 
     @Override
     public String toString() {
-        return "IntLinkedList{}";
+        int[] arr = new int[count];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = get(i);
+        }
+        return Arrays.toString(arr);
     }
 
     private Element getElementAtIndex(int index) {
