@@ -2,13 +2,39 @@ package com.company;
 
 public class IntLinkedList implements IntList {
 
-    @Override
-    public void add(int value) {
+    private class Element {
+        int value;
+        Element previous;
+        Element next;
 
+        Element(int value) {
+            this.value = value;
+        }
     }
+
+    private int count = 0;
+    private Element first;
+    private Element last;
 
     @Override
     public void clear() {
+        count = 0;
+        first = null;
+        last = null;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return count == 0;
+    }
+
+    @Override
+    public int size() {
+        return count;
+    }
+
+    @Override
+    public void add(int value) {
 
     }
 
@@ -23,18 +49,8 @@ public class IntLinkedList implements IntList {
     }
 
     @Override
-    public boolean isEmpty() {
-        return false;
-    }
-
-    @Override
     public void set(int index, int value) {
 
-    }
-
-    @Override
-    public int size() {
-        return 0;
     }
 
     @Override
