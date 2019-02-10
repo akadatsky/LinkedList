@@ -16,4 +16,10 @@ public interface IntList {
 
     int size();
 
+    void add(int index, int value);
+
+    void remove(int index);
+
+    int indexOf(int value);
+
 }

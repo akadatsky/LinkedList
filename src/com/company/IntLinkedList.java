@@ -38,6 +38,21 @@ public class IntLinkedList implements IntList {
     }
 
     @Override
+    public void add(int index, int value) {
+
+    }
+
+    @Override
+    public void remove(int index) {
+
+    }
+
+    @Override
+    public int indexOf(int value) {
+        return 0;
+    }
+
+    @Override
     public String toString() {
         return "IntLinkedList{}";
     }
