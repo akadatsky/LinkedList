@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class IntLinkedList implements IntList {
 
     private class Element {
@@ -79,6 +81,24 @@ public class IntLinkedList implements IntList {
 
     @Override
     public String toString() {
-        return "IntLinkedList{}";
+        return Arrays.toString(toArray());
     }
+
+    public int[] toArray() {
+        int[] arr = new int[count];
+        int index = 0;
+        Element tmp = first;
+        while (tmp != null) {
+            arr[index++] = tmp.value;
+            tmp = tmp.next;
+        }
+        return arr;
+    }
+
+    private void checkIndexRange(int index) {
+        if (index < 0 || index >= count) {
+            throw new IllegalArgumentException("Index out of range");
+        }
+    }
+
 }
