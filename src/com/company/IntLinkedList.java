@@ -39,8 +39,22 @@ public class IntLinkedList implements IntList {
     }
 
     @Override
+    public int indexOf(int value) {
+        int index = 0;
+        Element tmp = first;
+        while (tmp != null) {
+            if (tmp.value == value) {
+                return index;
+            }
+            tmp = tmp.next;
+            index++;
+        }
+        return -1;
+    }
+
+    @Override
     public boolean contains(int value) {
-        return false;
+        return indexOf(value) != -1;
     }
 
     @Override
@@ -61,11 +75,6 @@ public class IntLinkedList implements IntList {
     @Override
     public void remove(int index) {
 
-    }
-
-    @Override
-    public int indexOf(int value) {
-        return 0;
     }
 
     @Override
