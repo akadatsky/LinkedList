@@ -51,7 +51,7 @@ public class IntLinkedList implements IntList {
 
     @Override
     public void set(int index, int value) {
-
+        getElementAtIndex(index).value = value;
     }
 
     @Override
