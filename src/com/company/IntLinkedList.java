@@ -37,7 +37,15 @@ public class IntLinkedList implements IntList {
 
     @Override
     public void add(int value) {
-
+        Element newElement = new Element(value);
+        if (count == 0) {
+            first = newElement;
+        } else {
+            last.next = newElement;
+            newElement.previous = last;
+        }
+        last = newElement;
+        count++;
     }
 
     @Override
