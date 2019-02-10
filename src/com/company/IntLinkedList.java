@@ -79,12 +79,43 @@ public class IntLinkedList implements IntList {
 
     @Override
     public void add(int index, int value) {
-
+        checkIndexRange(index);
+        Element newElement = new Element(value);
+        if (index == 0) {
+            first.previous = newElement;
+            newElement.next = first;
+            first = newElement;
+        } else {
+            Element right = getElementAtIndex(index);
+            Element left = right.previous;
+            left.next = newElement;
+            newElement.previous = left;
+            right.previous = newElement;
+            newElement.next = right;
+        }
+        count++;
     }
 
     @Override
     public void remove(int index) {
-
+        checkIndexRange(index);
+        if (count == 1) {
+            first = null;
+            last = null;
+        } else if (index == 0) {
+            first = first.next;
+            first.previous = null;
+        } else if (index == count - 1) {
+            last = last.previous;
+            last.next = null;
+        } else {
+            Element tmp = getElementAtIndex(index);
+            Element left = tmp.previous;
+            Element right = tmp.next;
+            left.next = right;
+            right.previous = left;
+        }
+        count--;
     }
 
     @Override
@@ -101,6 +132,14 @@ public class IntLinkedList implements IntList {
             tmp = tmp.next;
         }
         return arr;
+    }
+
+    private Element getElementAtIndex(int index) {
+        Element tmp = first;
+        for (int i = 0; i < index; i++) {
+            tmp = tmp.next;
+        }
+        return tmp;
     }
 
     private void checkIndexRange(int index) {
